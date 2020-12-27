@@ -2,11 +2,10 @@
 
 namespace AnatolieGhebea\LaravelHfm\Contracts;
 
-interface FieldsMapContract {
-
-    /** 
+interface FieldsMapContract
+{
+    /**
      * This method must return the Model fields with their properties.
     */
-    public static function getFieldsMap( $opts = [] );
-
+    public static function getFieldsMap($opts = []);
 }
