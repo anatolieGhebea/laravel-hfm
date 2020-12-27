@@ -27,7 +27,11 @@
         "psr-4": {
             "AnatolieGhebea\\LaravelHfm\\": "src",
             "AnatolieGhebea\\LaravelHfm\\Database\\Factories\\": "database/factories"
-        }
+        },
+        "files":[
+            "app/Helpers/HfmHelper.php",
+            "app/Helpers/HfmConst.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
