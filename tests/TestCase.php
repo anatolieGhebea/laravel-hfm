@@ -3,7 +3,6 @@
 namespace AnatolieGhebea\LaravelHfm\Tests;
 
 use AnatolieGhebea\LaravelHfm\LaravelHfmServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

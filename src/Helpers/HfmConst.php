@@ -36,7 +36,7 @@ define('FLD_LENGTH', 'length');
 
 
 /**
- * EXCEL 
+ * EXCEL
  */
 define('EXCEL_LABEL', 'label');
 define('EXCEL_JOIN_FIELD_VALUE', 'join_field');
@@ -44,9 +44,10 @@ define('EXCEL_BOOLEAN_TYPE', 'boolean');
 define('EXCEL_MODEL_FUNCTION', 'model_function');
 
 
-// HELPER CLASS 
+// HELPER CLASS
 // creating this helper class to keep the custom data types consistent acrosso all the application files
-class HfmConst {
+class HfmConst
+{
 
     // CONST DOR FIELD $cmpType
     const CMP_TEXT = 'text';
@@ -68,6 +69,4 @@ class HfmConst {
     // CONST DOR FIELD $fltType
     const FLT_DEFAULT = 'default';
     const FLT_RANGE = 'range';
-
 }
-?>
