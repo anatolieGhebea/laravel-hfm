@@ -1,4 +1,5 @@
 <?php 
+
 namespace AnatolieGhebea\LaravelHfm\Helpers;
 
 // HELPER CLASS 

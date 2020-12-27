@@ -8,7 +8,7 @@ class LaravelHfmCommand extends Command
 {
     public $signature = 'laravel-hfm';
 
-    public $description = 'My command';
+    public $description = 'Hfm test command';
 
     public function handle()
     {
