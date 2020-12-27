@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Skeleton\Database\Factories;
+namespace AnatolieGhebea\LaravelHfm\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-class ModelFactory extends Factory
+
+class LaravelHfmFactory extends Factory
 {
     protected $model = YourModel::class;
 
@@ -16,4 +16,4 @@ class ModelFactory extends Factory
         ];
     }
 }
-*/
+

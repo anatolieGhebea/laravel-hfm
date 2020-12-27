@@ -1,12 +1,12 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace AnatolieGhebea\LaravelHfm\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelHfmCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-hfm';
 
     public $description = 'My command';
 

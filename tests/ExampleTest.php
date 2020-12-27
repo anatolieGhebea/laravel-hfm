@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace AnatolieGhebea\LaravelHfm\Tests;
 
 class ExampleTest extends TestCase
 {

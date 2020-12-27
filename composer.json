@@ -1,37 +1,37 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "anatolieghebea/laravel-hfm",
+    "description": "A  laravel packe aimed to reduce verbose and repetiteve code in the application by generatinc it at runtime starting from a simple Array declaration in the Models.",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "anatolieghebea",
+        "laravel-hfm"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/anatolieghebea/laravel-hfm",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": "https://spatie.be",
+            "name": "Anatolie Ghebea",
+            "email": "gt.anatoli@yahoo.it",
+            "homepage": "https://github.com/anatolieghebea/laravel-hfm",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/contracts": "^8.0"
+        "php": "^7.2",
+        "illuminate/contracts": "^7.2"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.3"
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "AnatolieGhebea\\LaravelHfm\\": "src",
+            "AnatolieGhebea\\LaravelHfm\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "AnatolieGhebea\\LaravelHfm\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -45,23 +45,16 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "AnatolieGhebea\\LaravelHfm\\LaravelHfmServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "LaravelHfm": "AnatolieGhebea\\LaravelHfm\\LaravelHfmFacade"
             }
         }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "funding": [
-        {
-            "type": "github",
-            "url": "https://github.com/sponsors/spatie"
-        },
-        {
-            "type": "other",
-            "url": "https://spatie.be/open-source/support-us"
-        }
+
     ]
 }
