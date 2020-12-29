@@ -3,7 +3,6 @@
 namespace AnatolieGhebea\LaravelHfm\Helpers;
 
 // HELPER CLASS
-// Add helper functions that can be used in every poiny of the application
 class HfmHelper
 {
     /**
@@ -118,20 +117,4 @@ class HfmHelper
         return $valid;
     }
 
-    /**
-     *
-     */
-    public static function isMenuItemActive($name)
-    {
-        // @todo
-    }
-
-    /**
-     * Normalize null string
-     * non posso scrivere null nel DB, quindi normalizzo a stringa vuota
-     */
-    public static function nullToString($str)
-    {
-        return $str == null ? '' : $str;
-    }
 }
