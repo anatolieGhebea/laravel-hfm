@@ -116,5 +116,4 @@ class HfmHelper
 
         return $valid;
     }
-
 }

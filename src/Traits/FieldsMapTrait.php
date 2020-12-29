@@ -3,6 +3,7 @@
 namespace AnatolieGhebea\LaravelHfm\Traits;
 
 use AnatolieGhebea\LaravelHfm\Helpers\HfmHelper;
+
 trait FieldsMapTrait
 {
     /**
@@ -23,25 +24,28 @@ trait FieldsMapTrait
         return $default_value;
     }
 
-
     /**
      * This method will return only a subset of the FieldMap.
-     * @param String $op    FM_KEEP will return only the fields specified in $list; 
+     * @param String $op    FM_KEEP will return only the fields specified in $list;
      *                      FM_DROP will unset the fields in $list and return the remaining.
-     * @param Array $list   The list of fields to kepp or to unset from the FieldMap 
+     * @param Array $list   The list of fields to kepp or to unset from the FieldMap
      */
-    public static function getFieldsMapSubset( $op = FM_KEEP , $list = [] ){
+    public static function getFieldsMapSubset($op = FM_KEEP, $list = [])
+    {
         $fields = self::getFieldsMap();
 
-        if( !(count($list) > 0) )
+        if (! (count($list) > 0)) {
             return $fields;
+        }
 
-        switch($op){
+        switch ($op) {
             case FM_KEEP:
-                $fields = HfmHelper::arrayUnsetUnmachingKeys( $fields, $list );
+                $fields = HfmHelper::arrayUnsetUnmachingKeys($fields, $list);
+
                 break;
             case FM_DROP:
-                $fields = HfmHelper::arrayUnsetKeyList( $fields, $list );
+                $fields = HfmHelper::arrayUnsetKeyList($fields, $list);
+
                 break;
             
             default:
@@ -51,17 +55,17 @@ trait FieldsMapTrait
         return $fields;
     }
 
-
     /**
      * Reurns the default validation rules for the model by calling getFieldsMap()
      * and checking which constraints must be applied
-     * 
+     *
      * @return Array $rules
      */
     public static function getDefaultValidationRules()
     {
         $fields = self::getFieldsMap();
         $rules = self::composeRules($fields);
+
         return $rules;
     }
 
@@ -70,19 +74,20 @@ trait FieldsMapTrait
      * @param Array $fields     Must be compatible wiht the FieldMap definition
      * @return Array $rules
      */
-    public static function getValidationRulesForFields( $fields )
+    public static function getValidationRulesForFields($fields)
     {
         $rules = self::composeRules($fields);
+
         return $rules;
     }
 
     /**
-     * @param Array 
-     * @return Array 
+     * @param Array
+     * @return Array
      */
-    private static function composeRules( $fields )
+    private static function composeRules($fields)
     {
-        if( !is_array($fields) ){
+        if (! is_array($fields)) {
             // throwException
             return false;
         }
@@ -117,5 +122,4 @@ trait FieldsMapTrait
 
         return $rules;
     }
-    
 }
