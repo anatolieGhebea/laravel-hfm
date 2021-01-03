@@ -39,19 +39,21 @@ foreach( $stdFields as $name => $field ) {
 	$_OPTIONS = ( isset( $field[FLD_OPTIONS]) && !empty($field[FLD_OPTIONS])) 
 				? $field[FLD_OPTIONS] 
 				: [];
-	
+    
+    $errorTpl = config('laravel-hfm.ui.standardForm.deafultFieldErrorTpl');
 	$_FIELDERROR_HTML =	( isset($errors) && $errors->has($name) != null  ) 
-					? '<div class="text-danger">'. $errors->first($name) . '</div>' 
+					? str_replace("%_ERROR$", $errors->first($name) , $errorTpl) 
 					: '';
 	
-	// shows a extra message on what should be the value of the field
+    // shows a extra message on what should be the value of the field
+    $fieldInfoTpl = config('laravel-hfm.ui.standardForm.defaultFieldInfoTpl');
 	$_INPUTHELPERMSG_HTML = ( isset( $field[FLD_HELPER_MSG] ) && !empty($field[FLD_HELPER_MSG])  )
-						? '<div><small class="text-muted">'. $field[FLD_HELPER_MSG] . '</small></div>' 
+						? str_replace("%_MSG%", $field[FLD_HELPER_MSG], $fieldInfoTpl)
 						: '';
 
-	$_CMP_WRAPPER_CLASS = isset( $field[FLD_WRP_CLASS] )  && !empty($field[FLD_WRP_CLASS] ) 
-						? $field[FLD_WRP_CLASS]
-						: ' col-md-6 ';
+	$_INPUTGROUP_EXTRA_CLASS = isset( $field[FLD_INPUTGROUP_EXTRA_CLASS] )  && !empty($field[FLD_INPUTGROUP_EXTRA_CLASS] ) 
+						? $field[FLD_INPUTGROUP_EXTRA_CLASS]
+						: config('laravel-hfm.ui.standardForm.defaultInputGroupClasses');
 
 	$_CMPROWS = ( isset( $field[FLD_ROWS] )  && is_numeric( $field[FLD_ROWS] ) && $field[FLD_ROWS] > 0 ) 
 				? $field[FLD_ROWS]
@@ -73,7 +75,7 @@ foreach( $stdFields as $name => $field ) {
 			$_VAL = $mainModel->$name;
 		}
 	
-		if( $field['dataType'] == DT_DATE && $_VAL instanceof \Carbon\Carbon ) {
+		if( $field[FLD_DATA_TYPE] == DT_DATE && $_VAL instanceof \Carbon\Carbon ) {
 			$_VAL = $_VAL->format('d/m/Y');
 		}
 	}
@@ -88,62 +90,70 @@ foreach( $stdFields as $name => $field ) {
 	// END get the value for the current field 
 	//
 
+    $inputClass = config('laravel-hfm.ui.standardForm.defaultInputClass');
 	$_PARAMS = [
-		'class' => 'form-control  '
+        FLD_INPUT_CLASS => $inputClass ,
+        FLD_PLACEHOLDER => $_PLACEHOLDER
 	]; 
 	
 	//
 	if($_READONLY ){
 		$_PARAMS['readonly'] = true;
-		$_PARAMS['class'] = $_PARAMS['class'] . ' readOnly';
+		$_PARAMS[FLD_INPUT_CLASS] = $_PARAMS[FLD_INPUT_CLASS] . ' readOnly';
 	}
 
 	$requiredMark = '';
 	if($_REQUIRED) {
-		$requiredMark = '<span class="text-danger"> *</span>';
-		$_PARAMS['required'] = true;
+        $requiredMark = config('laravel-hfm.ui.standardForm.defaultRequiredMark');
+        $_LABEL = $_LABEL . ' '. $requiredMark; 
+		$_PARAMS[FLD_REQUIRED] = true;
 	}
-	
-	$_fld_label_html = '<label for="'.$name.'" class="">'.$_LABEL. $requiredMark.' </label>' ;
+    
+    $labelTpl = config('laravel-hfm.ui.standardForm.dafaultLabelTpl');
+    $labelClasses = config('laravel-hfm.ui.standardForm.dafaultLabelClasses');
 
+	$_fld_label_html = str_replace( [ "%_NAME%", "%_CLASS%" ,  "%_LABEL%" ], [ $name, $labelClasses, $_LABEL ], $labelTpl );
+	
 	//
 	// START component composition
-	//
-	$inputFiled = '<div class="form-group '. $_CMP_WRAPPER_CLASS .'">'.
-					$_fld_label_html;
+    //
+    $inputGroupTpl = config('laravel-hfm.ui.standardForm.defaultInputGroupTpl');
+    $inputGroupTpl = str_replace("%_CLASSES%", $_INPUTGROUP_EXTRA_CLASS, $inputGroupTpl );
+
+	$inputGroupElements = $_fld_label_html;
 
 	switch( $field[FLD_UI_CMP] ) {
 		case CMP_NUMBER:
-			$inputFiled .= Form::number($name, $_VAL, $_PARAMS );
+			$inputGroupElements .= Form::number($name, $_VAL, $_PARAMS );
 			break;
 
 		case CMP_TEXT:
 			if( $field[FLD_DATA_TYPE] == DT_DATE ){
 				// datepicker must be set only if FLD_UI_CMP is text
-				$_PARAMS['class'] = $_PARAMS['class'] . ' datepicker';
+				$_PARAMS[FLD_INPUT_CLASS] = $_PARAMS[FLD_INPUT_CLASS] . ' datepicker';
 			}
 
-			$inputFiled .= Form::text($name, $_VAL, $_PARAMS);
+			$inputGroupElements .= Form::text($name, $_VAL, $_PARAMS);
 			break;
 
 		case CMP_EMAIL:
-			$inputFiled .= Form::text($name, $_VAL, $_PARAMS);
+			$inputGroupElements .= Form::text($name, $_VAL, $_PARAMS);
 			break;
 
 		case CMP_PASSWORD:
 			
-			$inputFiled .= Form::password($name, $_PARAMS);
+			$inputGroupElements .= Form::password($name, $_PARAMS);
 			break;
 
 		case CMP_CHECKBOX:
-			$_PARAMS['class'] = ' form-check ';
+			$_PARAMS[FLD_INPUT_CLASS] = ' form-check ';
 			$cssReadOnly = $_READONLY ? ' readOnly ': '';
 
-			//$inputFiled .= Form::hidden($name,0); 
-			//$inputFiled .= Form::checkbox($name, 1, $_VAL, $_PARAMS );
+			// $inputGroupElements .= Form::hidden($name,0); 
+			// $inputGroupElements .= Form::checkbox($name, 1, $_VAL, $_PARAMS );
 			
 			// 
-			$inputFiled .= '<div class="custom-control custom-checkbox " style="padding-top:.35rem;">'.
+			$inputGroupElements .= '<div class="custom-control custom-checkbox " style="padding-top:.35rem;">'.
 								'<input type="hidden" class="custom-control-input  '.$cssReadOnly.'" value="0">'.
 								'<input type="checkbox" class="custom-control-input '.$cssReadOnly.' " '.( $_VAL ? 'checked="checked"': '' ).' value="1" name="'.$name.'" id="'.$name.'">'.
 								'<label class="custom-control-label  '.$cssReadOnly.'" for="'.$name.'"></label>'.
@@ -153,13 +163,13 @@ foreach( $stdFields as $name => $field ) {
 
 		case CMP_SELECT:
 			        
-			$_PARAMS['placeholder'] = empty($_PLACEHOLDER) ? '-- Seleziona '.$_LABEL .' --' : $_PLACEHOLDER;
-			$inputFiled .= Form::select($name, $_OPTIONS ,$_VAL, $_PARAMS);
+			$_PARAMS[FLD_PLACEHOLDER] = empty($_PLACEHOLDER) ? '-- Seleziona '.$_LABEL .' --' : $_PLACEHOLDER;
+			$inputGroupElements .= Form::select($name, $_OPTIONS ,$_VAL, $_PARAMS);
 			break;
 
 		case CMP_TEXT_AREA:
-			$_PARAMS['rows'] = $_CMPROWS;
-			$inputFiled .= Form::textarea($name, $_VAL, $_PARAMS);
+			$_PARAMS[FLD_ROWS] = $_CMPROWS;
+			$inputGroupElements .= Form::textarea($name, $_VAL, $_PARAMS);
 			
 			break;
 
@@ -168,21 +178,24 @@ foreach( $stdFields as $name => $field ) {
 
 	}
 
-	$inputFiled .=      $_INPUTHELPERMSG_HTML .
-						$_FIELDERROR_HTML .
-					'</div>';
+    $inputGroupElements .= $_INPUTHELPERMSG_HTML . $_FIELDERROR_HTML;
+    $inputGroup = str_replace("%_ELEMETNS%", $inputGroupElements, $inputGroupTpl );
+
 	//					
 	// END component composition
 	//
 
 	// add field to form
-	$result[] = $inputFiled;
+	$result[] = $inputGroup;
 
 } // end foreach
 
 
 // Print the complete HTML code 
-$inputFileds = implode(' ' , $result);
-echo $inputFileds;
+$inputGroups = implode(' ' , $result);
+
+$wrapperTpl = config('laravel-hfm.ui.standardForm.defaultInputGroupsWrapperTpl');
+$formInputs = str_replace("%_INPUTGROUPS%", $inputGroups, $wrapperTpl);
+echo $formInputs;
 
 ?>

@@ -25,7 +25,13 @@ interface FieldsMapContract
      *         FLD_REQUIRED => '1|0 indicates if value is required for the field',
      *         FLD_LENGTH => '-1 ( for long text, float ) | max 255 (for varchar)| max 11 (for integer) | 1 ( boolean ) ',
      *         FLD_FLT_COND => ' = | LIKE  indicates which condition to use when constructing the query automaticaly'
-     *         FLD_OPTIONS => 'when FLD_UI_CMP is of type CMP_SELECT is neccessari to provaide an arrya of options, defaults to []. Normaly is populate in the controller right before passing it to the view'
+     *         FLD_OPTIONS => 'when FLD_UI_CMP is of type CMP_SELECT is neccessari to provaide an arrya of options, defaults to []. Normaly is populate in the controller right before passing it to the view',
+     *         FLD_PLACEHOLDER => 'the text for the placeholder, default value is empty ',
+     *         FLD_READ_ONLY => '1 | 0 indicates if the field is editable or not',
+     *         FLD_HELPER_MSG => 'A helper text that's shown under the input field',
+     *         FLD_WRP_CLASS => 'Default:" col-md-6 ".  Classes to be applied to the input field wrapper div, mainly used to indicate the width of the field.',
+     *         FLD_ROWS => 'Default: "1". indicates the number of rows for the text area.',
+     *         FLD_DEFAULT_VALUE => 'used to preset a value on the field, if the value in DB is null else DB value has precedence',
      *     ]
      * ];
      * 

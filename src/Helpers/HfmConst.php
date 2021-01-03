@@ -39,7 +39,8 @@ define('FLD_OPTIONS', 'options');
 define('FLD_PLACEHOLDER', 'placeholder'); 
 define('FLD_READ_ONLY', 'readOnly'); 
 define('FLD_HELPER_MSG', 'inputHelperMessage'); 
-define('FLD_WRP_CLASS', 'cmpWrapperClass'); 
+define('FLD_INPUTGROUP_EXTRA_CLASS', 'inputGroupClass'); 
+define('FLD_INPUT_CLASS', 'class'); 
 define('FLD_ROWS', 'rows'); // for CMP_TEXT_AREA
 define('FLD_DEFAULT_VALUE', 'defaultValue'); // for CMP_TEXT_AREA
 
