@@ -9,7 +9,6 @@ class LaravelHfmServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/laravel-hfm.php' => config_path('laravel-hfm.php'),
@@ -32,7 +31,6 @@ class LaravelHfmServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-hfm');
-        
     }
 
     public function register()
