@@ -3,7 +3,7 @@
 # A simple Laravel packge to help DRY your code
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ghebby/laravel-hfm.svg?style=flat-square)](https://packagist.org/packages/anatolieghebea/laravel-hfm)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/anatolieghebea/laravel-hfm/run-tests?label=tests)](https://github.com/anatolieghebea/laravel-hfm/actions?query=workflow%3ATests+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/anatolieGhebea/laravel-hfm/run-tests?label=tests)](https://github.com/anatolieghebea/laravel-hfm/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/ghebby/laravel-hfm.svg?style=flat-square)](https://packagist.org/packages/anatolieghebea/laravel-hfm)
 
 
