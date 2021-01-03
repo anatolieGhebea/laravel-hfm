@@ -19,7 +19,7 @@ define('CMP_HIDDEN', 'hidden'); // input type text and hidden
  */
 define('DT_INT', 'int'); // type Integer
 define('DT_FLOAT', 'float'); // type Float/Double
-define('DT_BOOLEAN', 'boolean'); // type TinyInteger 
+define('DT_BOOLEAN', 'boolean'); // type TinyInteger
 define('DT_DATE', 'date'); // type Date
 define('DT_DATE_TIME', 'datetime'); // type DateTime
 define('DT_TEXT', 'text'); // type Varchar(255)
@@ -29,7 +29,7 @@ define('DT_TEXT_AREA', 'textarea'); // type LongText
  * STANDARD FIELDS PROPS
  */
 define('FLD_LABEL', 'label');
-define('FLD_UI_CMP', 'cmpType'); // the HTML component to use in the UI 
+define('FLD_UI_CMP', 'cmpType'); // the HTML component to use in the UI
 define('FLD_DATA_TYPE', 'dataType'); // the type of the field in the DataBase table. Information used to generate validation rules
 define('FLD_PRIMARY', 'primary'); // indicates if the field is primary
 define('FLD_REQUIRED', 'required'); // indicates if the field is required
@@ -54,7 +54,7 @@ define('EXCEL_MODEL_FUNCTION', 'model_function');
 
 
 /**
- * FIELD MAP 
+ * FIELD MAP
  */
-define('FM_KEEP', 'keep'); 
+define('FM_KEEP', 'keep');
 define('FM_DROP', 'drop');
