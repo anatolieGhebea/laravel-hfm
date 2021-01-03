@@ -49,10 +49,7 @@
         "laravel": {
             "providers": [
                 "AnatolieGhebea\\LaravelHfm\\LaravelHfmServiceProvider"
-            ],
-            "aliases": {
-                "LaravelHfm": "AnatolieGhebea\\LaravelHfm\\LaravelHfmFacade"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
