@@ -8,10 +8,22 @@ return [
     |--------------------------------------------------------------------------
     | 
     | Configuration varaibles
-    | WARNING: the placeholders names MUST be preserved! A placeholder begins and ends with %, 
-    | %_NAME% , %_CLASS% are examples of place holders.
-    |
+    | 
     */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Formats
+    |--------------------------------------------------------------------------
+    | 
+    | Default formats 
+    */
+    'formats' => [
+        'date_db' => 'Y-m-d',
+        'date_ui' => 'd/m/Y',
+        'datetime_db' => 'Y-m-d H:i:s',
+        'datetime_ui' => 'd-m-Y H:i:s'
+    ],
 
 
     'ui' => [
@@ -23,6 +35,9 @@ return [
         | 
         | This value set some of the defaults variavles inside the "standardForm" 
         | helper function.
+        |
+        | WARNING: the placeholders names MUST be preserved! A placeholder begins and ends with %, 
+        | %_NAME% , %_CLASS% are examples of place holders.
         |
         */
         
