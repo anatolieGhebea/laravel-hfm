@@ -106,7 +106,11 @@ foreach( $stdFields as $name => $field ) {
 	if($_REQUIRED) {
         $requiredMark = config('laravel-hfm.ui.standardForm.defaultRequiredMark');
         $_LABEL = $_LABEL . ' '. $requiredMark; 
-		$_PARAMS[FLD_REQUIRED] = true;
+
+        $addRequiredAttribute = config('laravel-hfm.ui.standardForm.addRequiredAttribute');
+        $addRequiredAttribute = !empty($addRequiredAttribute) && !$addRequiredAttribute ? false : true; 
+        if($addRequiredAttribute)
+		    $_PARAMS[FLD_REQUIRED] = true;
 	}
     
     $labelTpl = config('laravel-hfm.ui.standardForm.dafaultLabelTpl');

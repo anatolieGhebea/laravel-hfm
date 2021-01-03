@@ -55,6 +55,12 @@ return [
         | 
         */
         'standardForm' => [
+
+            // set attribute 'required' on the input field.
+            // if the value it is set to false, the required constraint will be 
+            // checked only on the server side, no restriction on the client side
+            // That means that a submit will go through with an empty reqired value, and must be blocked by the server
+            'addRequiredAttribute' => true,
             
             // label template 
             'dafaultLabelTpl' => '<label for="%_NAME%" class="%_CLASS%">%_LABEL%</label>',
@@ -89,7 +95,6 @@ return [
         'standardFilters' => [
             // show compnent labels 
             'showLabels' => true,
-            
         ]
     ]
 
