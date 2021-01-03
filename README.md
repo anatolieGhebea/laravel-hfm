@@ -17,7 +17,7 @@ This packe aims to reduce verbose and repetiteve code in the application by gene
 2. You can install the package via composer:
 
 ```bash
-composer require anatolieghebea/laravel-hfm
+composer require ghebby/laravel-hfm
 ```
 
 3. Optional: The service provider will automatically get registered. Or you may manually add the service provider in your config/app.php file:
@@ -25,19 +25,19 @@ composer require anatolieghebea/laravel-hfm
 ```php
 'providers' => [
     // ...
-    AnatolieGhebea\LaravelHfm\LaravelHfmServiceProvider::class,
+    Ghebby\LaravelHfm\LaravelHfmServiceProvider::class,
 ];
 ```
 
 4. You should publish the config/laravel-hfm.php config file with:
 
 ```bash
-php artisan vendor:publish --provider="AnatolieGhebea\LaravelHfm\LaravelHfmServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Ghebby\LaravelHfm\LaravelHfmServiceProvider" --tag="config"
 ```
 
 5. If you want to customize the views for the UI helper functions, then run  
 ```bash
-php artisan vendor:publish --provider="AnatolieGhebea\LaravelHfm\LaravelHfmServiceProvider" --tag="views"
+php artisan vendor:publish --provider="Ghebby\LaravelHfm\LaravelHfmServiceProvider" --tag="views"
 ```
 to bublish them in ``resources/views/vendor/laravel-hfm/``
 
@@ -208,27 +208,27 @@ class Company extends Model implements FieldsMapContract
     // OR
     protected $guarded = ['id'];
 
-    	/**
-	 * Returns the DB fields for the model. 
-	 * This map is used to automatically the create/update form
-	 */
-	public static function getFieldsMap($opts = [] ) {
+    /**
+     * Returns the DB fields for the model. 
+     * This map is used to automatically the create/update form
+     */
+    public static function getFieldsMap($opts = [] ) {
 
-		$fields = [
-			'id' => [ FLD_LABEL => 'Id', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_INT, FLD_LENGTH => 11 , FLD_FLT_COND => 'LIKE', FLD_PRIMARY => true,  FLD_REQUIRED => false ] ,// come nomeNormalizzato,
-			'name' => [ FLD_LABEL => 'Company name', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ] ,// come nomeNormalizzato,
-			'fiscal_code' => [ FLD_LABEL => 'Fiscal Code', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ] ,
-			'email' => [ FLD_LABEL => 'E-mail', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ] ,
-			'phone' => [ FLD_LABEL => 'Phone', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 50 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => false ],
+        $fields = [
+            'id' => [ FLD_LABEL => 'Id', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_INT, FLD_LENGTH => 11 , FLD_FLT_COND => 'LIKE', FLD_PRIMARY => true,  FLD_REQUIRED => false ] ,
+            'name' => [ FLD_LABEL => 'Company name', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ] ,
+            'fiscal_code' => [ FLD_LABEL => 'Fiscal Code', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ] ,
+            'email' => [ FLD_LABEL => 'E-mail', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ] ,
+            'phone' => [ FLD_LABEL => 'Phone', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 50 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => false ],
             'description'=> [ FLD_LABEL => 'Description',FLD_UI_CMP => CMP_TEXT_AREA,  FLD_DATA_TYPE => DT_TEXT_AREA, FLD_LENGTH => -1, FLD_FLT_COND => 'LIKE', FLD_REQUIRED => false ] ,
-			'address' => [ FLD_LABEL => 'Address', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ],
-			'city' => [ FLD_LABEL => 'City', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 100 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ],
-			'zip' => [ FLD_LABEL => 'zip', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 10 , FLD_FLT_COND => '=', FLD_REQUIRED => true ],
-			'country' => [ FLD_LABEL => 'Country', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 100 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ],
+            'address' => [ FLD_LABEL => 'Address', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ],
+            'city' => [ FLD_LABEL => 'City', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 100 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ],
+            'zip' => [ FLD_LABEL => 'zip', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 10 , FLD_FLT_COND => '=', FLD_REQUIRED => true ],
+            'country' => [ FLD_LABEL => 'Country', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 100 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ],
         ];
 
-		return $fields;
-	}
+        return $fields;
+    }
 
 }
 ```
