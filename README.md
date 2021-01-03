@@ -13,13 +13,35 @@ This packe aims to reduce verbose and repetiteve code in the application by gene
 
 ## Installation
 
-You can install the package via composer:
+1. This package publishes a config/laravel-hfm.php file. If you already have a file by that name, you must rename or remove it.
+2. You can install the package via composer:
 
 ```bash
 composer require anatolieghebea/laravel-hfm
 ```
 
-This package has no Migrations and Config hence the publish commands are not present.
+3. Optional: The service provider will automatically get registered. Or you may manually add the service provider in your config/app.php file:
+
+```php
+'providers' => [
+    // ...
+    AnatolieGhebea\LaravelHfm\LaravelHfmServiceProvider::class,
+];
+```
+
+4. You should publish the config/laravel-hfm.php config file with:
+
+```bash
+php artisan vendor:publish --provider="AnatolieGhebea\LaravelHfm\LaravelHfmServiceProvider" --tag="config"
+```
+
+5. If you want to customize the views for the UI helper functions, then run  
+```bash
+php artisan vendor:publish --provider="AnatolieGhebea\LaravelHfm\LaravelHfmServiceProvider" --tag="views"
+```
+to bublish them in ``resources/views/vendor/laravel-hfm/``
+
+
 
 ## Usage
 
@@ -280,7 +302,11 @@ On the view side
     @csrf
     <div>
         @if( count($fileds) > 0 )
-            @include('vendor.helpers._standardFormV2', ['stdFields' => $fileds])
+            // if you have published and customized the UI helper functions, use this
+            @include('vendor.anatolieghebea.laravel-hfm.helpers._standardForm', ['stdFields' => $fileds])
+
+            // if using the package default helper functions
+            @include('laravel-hfm::helpers._standardForm', ['stdFields' => $fileds])
         @endif
     </div>
     <button type="submit">Create</button>
@@ -293,7 +319,11 @@ On the view side
     @csrf
     <div>
         @if( count($fileds) > 0 )
-            @include('vendor.helpers._standardFormV2', ['stdFields' => $fileds, 'mainModel' => $company, 'op' => 'edit'])
+            // if you have published and customized the UI helper functions, use this
+            @include('vendor.anatolieghebea.laravel-hfm.helpers._standardForm', ['stdFields' => $fileds, 'mainModel' => $company, 'op' => 'edit'])
+
+            // if using the package default helper functions
+            @include('laravel-hfm::helpers._standardForm', ['stdFields' => $fileds, 'mainModel' => $company, 'op' => 'edit'])
         @endif
     </div>
     <button type="submit">Save</button>
