@@ -1,6 +1,6 @@
 <?php
 
-namespace AnatolieGhebea\LaravelHfm\Commands;
+namespace Ghebby\LaravelHfm\Commands;
 
 use Illuminate\Console\Command;
 

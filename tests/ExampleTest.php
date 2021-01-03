@@ -1,6 +1,6 @@
 <?php
 
-namespace AnatolieGhebea\LaravelHfm\Tests;
+namespace Ghebby\LaravelHfm\Tests;
 
 class ExampleTest extends TestCase
 {

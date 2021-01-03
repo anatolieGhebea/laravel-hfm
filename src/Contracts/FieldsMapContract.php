@@ -1,6 +1,6 @@
 <?php
 
-namespace AnatolieGhebea\LaravelHfm\Contracts;
+namespace Ghebby\LaravelHfm\Contracts;
 
 interface FieldsMapContract
 {

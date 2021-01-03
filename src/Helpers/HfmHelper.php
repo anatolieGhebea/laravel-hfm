@@ -1,6 +1,6 @@
 <?php
 
-namespace AnatolieGhebea\LaravelHfm\Helpers;
+namespace Ghebby\LaravelHfm\Helpers;
 
 // HELPER CLASS
 class HfmHelper

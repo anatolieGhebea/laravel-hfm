@@ -1,8 +1,8 @@
 <?php
 
-namespace AnatolieGhebea\LaravelHfm\Tests;
+namespace Ghebby\LaravelHfm\Tests;
 
-use AnatolieGhebea\LaravelHfm\LaravelHfmServiceProvider;
+use Ghebby\LaravelHfm\LaravelHfmServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

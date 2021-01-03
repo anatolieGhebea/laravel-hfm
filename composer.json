@@ -1,7 +1,8 @@
 {
-    "name": "anatolieghebea/laravel-hfm",
+    "name": "ghebby/laravel-hfm",
     "description": "A  laravel packe aimed to reduce verbose and repetiteve code in the application by generatinc it at runtime starting from a simple Array declaration in the Models.",
     "keywords": [
+        "ghebby",
         "anatolieghebea",
         "laravel-hfm"
     ],
@@ -17,7 +18,8 @@
     ],
     "require": {
         "php": "^7.2",
-        "illuminate/contracts": "^7.2"
+        "illuminate/contracts": "^7.2",
+        "laravelcollective/html": "^6.1"
     },
     "require-dev": {
         "orchestra/testbench": "^5.0",
@@ -25,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "AnatolieGhebea\\LaravelHfm\\": "src"
+            "Ghebby\\LaravelHfm\\": "src"
         },
         "files":[
             "src/Helpers/HfmConst.php",
@@ -34,7 +36,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "AnatolieGhebea\\LaravelHfm\\Tests\\": "tests"
+            "Ghebby\\LaravelHfm\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -48,7 +50,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AnatolieGhebea\\LaravelHfm\\LaravelHfmServiceProvider"
+                "Ghebby\\LaravelHfm\\LaravelHfmServiceProvider"
             ]
         }
     },

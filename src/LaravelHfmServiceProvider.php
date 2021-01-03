@@ -1,8 +1,8 @@
 <?php
 
-namespace AnatolieGhebea\LaravelHfm;
+namespace Ghebby\LaravelHfm;
 
-use AnatolieGhebea\LaravelHfm\Commands\LaravelHfmCommand;
+use Ghebby\LaravelHfm\Commands\LaravelHfmCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelHfmServiceProvider extends ServiceProvider

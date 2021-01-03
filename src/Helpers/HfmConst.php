@@ -1,6 +1,6 @@
 <?php
 
-namespace AnatolieGhebea\LaravelHfm\Helpers;
+namespace Ghebby\fm\Helpers;
 
 /**
  * CONST FOR FIELD PROP cmpType;

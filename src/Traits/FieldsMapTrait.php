@@ -1,8 +1,8 @@
 <?php
 
-namespace AnatolieGhebea\LaravelHfm\Traits;
+namespace Ghebby\LaravelHfm\Traits;
 
-use AnatolieGhebea\LaravelHfm\Helpers\HfmHelper;
+use Ghebby\LaravelHfm\Helpers\HfmHelper;
 
 trait FieldsMapTrait
 {
