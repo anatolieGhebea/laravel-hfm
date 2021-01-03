@@ -195,8 +195,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use AnatolieGhebea\LaravelHfm\Traits\FieldsMapTrait;
-use AnatolieGhebea\LaravelHfm\Contracts\FieldsMapContract;
+use Ghebby\LaravelHfm\Traits\FieldsMapTrait;
+use Ghebby\LaravelHfm\Contracts\FieldsMapContract;
 
 class Company extends Model implements FieldsMapContract
 {
@@ -215,16 +215,16 @@ class Company extends Model implements FieldsMapContract
 	public static function getFieldsMap($opts = [] ) {
 
 		$fields = [
-			'id' => [ FLD_LABEL => 'Id', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_INT, 'length' => 11 , 'fltCond' => 'LIKE', 'primary' => true,  'required' => false ] ,// come nomeNormalizzato,
-			'name' => [ FLD_LABEL => 'Company name', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, 'length' => 255 , 'fltCond' => 'LIKE', 'required' => true ] ,// come nomeNormalizzato,
-			'fiscal_code' => [ FLD_LABEL => 'Fiscal Code', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, 'length' => 255 , 'description' => '','fltCond' => 'LIKE', 'required' => true ] ,
-			'email' => [ FLD_LABEL => 'E-mail', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, 'length' => 255 , 'description' => '','fltCond' => 'LIKE', 'required' => true ] ,
-			'phone' => [ FLD_LABEL => 'Phone', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, 'length' => 50 , 'description' => '','fltCond' => 'LIKE', 'required' => false ],
-            'description'=> [ FLD_LABEL => 'Description',FLD_UI_CMP => CMP_TEXT_AREA,  FLD_DATA_TYPE => DT_TEXT_AREA, 'length' => -1, 'description' => '','fltCond' => 'LIKE', 'required' => false ] ,
-			'address' => [ FLD_LABEL => 'Address', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, 'length' => 255 , 'description' => '','fltCond' => 'LIKE', 'required' => true ],
-			'city' => [ FLD_LABEL => 'City', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, 'length' => 100 , 'description' => '','fltCond' => 'LIKE', 'required' => true ],
-			'zip' => [ FLD_LABEL => 'zip', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, 'length' => 10 , 'description' => '','fltCond' => '=', 'required' => true ],
-			'country' => [ FLD_LABEL => 'Country', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, 'length' => 100 , 'description' => '','fltCond' => 'LIKE', 'required' => true ],
+			'id' => [ FLD_LABEL => 'Id', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_INT, FLD_LENGTH => 11 , FLD_FLT_COND => 'LIKE', FLD_PRIMARY => true,  FLD_REQUIRED => false ] ,// come nomeNormalizzato,
+			'name' => [ FLD_LABEL => 'Company name', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ] ,// come nomeNormalizzato,
+			'fiscal_code' => [ FLD_LABEL => 'Fiscal Code', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ] ,
+			'email' => [ FLD_LABEL => 'E-mail', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ] ,
+			'phone' => [ FLD_LABEL => 'Phone', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 50 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => false ],
+            'description'=> [ FLD_LABEL => 'Description',FLD_UI_CMP => CMP_TEXT_AREA,  FLD_DATA_TYPE => DT_TEXT_AREA, FLD_LENGTH => -1, FLD_FLT_COND => 'LIKE', FLD_REQUIRED => false ] ,
+			'address' => [ FLD_LABEL => 'Address', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 255 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ],
+			'city' => [ FLD_LABEL => 'City', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 100 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ],
+			'zip' => [ FLD_LABEL => 'zip', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 10 , FLD_FLT_COND => '=', FLD_REQUIRED => true ],
+			'country' => [ FLD_LABEL => 'Country', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_TEXT, FLD_LENGTH => 100 , FLD_FLT_COND => 'LIKE', FLD_REQUIRED => true ],
         ];
 
 		return $fields;
@@ -331,9 +331,13 @@ On the view side
 //[....]
 ```
 
-With this approach we centralized the source of truth in the application, if we change the label for the filed `name` in Company.php it will propagete to all the views
-that relies on the `_standardFormV2` helper function. If in the same Field Map on the filed `fiscal_code` the attribute `required` is set to FALSE, the change will  
-immediately affect the store and update methods in Controller and also the required attribute on the html method. 
+With this approach we centralized the source of truth in the application, if we change the label for the filed `name` in Company.php it will propagete to all the views that relies on the `_standardForm` helper function. 
+
+If in the Field Map on the filed `fiscal_code` the attribute `required` is set to FALSE, the change will immediately affect the store and update methods in Controller and also the required attribute on the input field. 
+
+### Adding removing fields
+
+Adding or removing a field to an Model entity, is just the mater of adding o removing a line in the ``getFieldMap()`` of the model.
 
 ## Testing
 
