@@ -2,7 +2,6 @@
 
 namespace Ghebby\LaravelHfm;
 
-use Ghebby\LaravelHfm\Commands\LaravelHfmCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelHfmServiceProvider extends ServiceProvider
@@ -17,7 +16,6 @@ class LaravelHfmServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../resources/views' => base_path('resources/views/vendor/laravel-hfm'),
             ], 'views');
-
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-hfm');
@@ -27,5 +25,4 @@ class LaravelHfmServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/laravel-hfm.php', 'laravel-hfm');
     }
-
 }
