@@ -36,5 +36,5 @@ interface FieldsMapContract
      * ];
      *
     */
-    public static function getFieldsMap($opts = []);
+    public static function getFieldsMap();
 }

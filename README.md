@@ -71,7 +71,7 @@ class Company extends Model
 {
     protected $table = 'companies';
 
-    protected $fillable = ['name', 'fiscla_code', '...'];
+    protected $fillable = ['name', 'fiscal_code', '...'];
     // OR
     protected $guarded = ['id'];
 
@@ -204,7 +204,7 @@ class Company extends Model implements FieldsMapContract
 
     protected $table = 'companies';
 
-    protected $fillable = ['name', 'fiscla_code', '...'];
+    protected $fillable = ['name', 'fiscal_code', '...'];
     // OR
     protected $guarded = ['id'];
 
@@ -212,7 +212,7 @@ class Company extends Model implements FieldsMapContract
      * Returns the DB fields for the model. 
      * This map is used to automatically the create/update form
      */
-    public static function getFieldsMap($opts = [] ) {
+    public static function getFieldsMap() {
 
         $fields = [
             'id' => [ FLD_LABEL => 'Id', FLD_UI_CMP => CMP_TEXT,  FLD_DATA_TYPE => DT_INT, FLD_LENGTH => 11 , FLD_FLT_COND => 'LIKE', FLD_PRIMARY => true,  FLD_REQUIRED => false ] ,
